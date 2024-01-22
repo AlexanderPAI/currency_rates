@@ -120,7 +120,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+currency_rates/currency_rates/.env
 .venv
 env/
 venv/
