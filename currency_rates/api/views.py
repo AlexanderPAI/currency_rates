@@ -30,12 +30,14 @@ def get_current_usd(request):
     currency = 'USD'
     target_currency = 'RUB'
     currency_rate = get_currency_rate(ENDPOINT, API_ID, currency, target_currency)
-    rate_requests = RateRequest.objects.all()
-    RateRequest.objects.create(
-        request_date=datetime.fromtimestamp(currency_rate['timestamp']),
-        currency_code=currency,
-        target_currency_code=target_currency,
-        rate=currency_rate['rates'][target_currency]
-    )
-    serializer = RateRequestSerializer(rate_requests, many=True)
-    return Response(serializer.data)
+    if currency_rate is not None:
+        rate_requests = RateRequest.objects.all()
+        RateRequest.objects.create(
+            request_date=datetime.fromtimestamp(currency_rate['timestamp']),
+            currency_code=currency,
+            target_currency_code=target_currency,
+            rate=currency_rate['rates'][target_currency]
+        )
+        serializer = RateRequestSerializer(rate_requests, many=True)
+        return Response(serializer.data)
+    return Response({'message': 'unable to get a response from the external api'})
