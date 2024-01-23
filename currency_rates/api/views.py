@@ -21,11 +21,11 @@ ENDPOINT = 'https://openexchangerates.org/api/latest.json'
 API_ID = os.getenv('API_ID')
 
 
-@api_view(
-    http_method_names=['GET'],
-)
+@api_view(http_method_names=['GET'],)
 def get_current_usd(request):
-    """View-функция для представления курса доллара США с отображением 10 последних запросов."""
+    """
+    Курс доллара США с отображением 10 последних запросов.
+    """
     currency = 'USD'
     target_currency = 'RUB'
     currency_rate = get_currency_rate(ENDPOINT, API_ID, currency, target_currency)
