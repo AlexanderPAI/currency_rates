@@ -1,0 +1,41 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: db
+    image: postgres:15.0-alpine
+    volumes:
+      - db_volume:/var/lib/postgresql/data/
+    env_file:
+      - ./currency_rates/currency_rates/.env
+    ports:
+      - "5432:5432"
+
+  currency_rates:
+    container_name: "currency_rates"
+    build: .
+    restart: always
+    volumes:
+      - static_value:/app/static/
+    depends_on:
+      - db
+    env_file:
+      - ./currency_rates/currency_rates/.env
+    command: >
+      sh -c "python manage.py collectstatic --no-input &&
+             python manage.py migrate --run-syncdb &&
+             gunicorn currency_rates.wsgi:application --bind 0:8000"
+
+  nginx:
+    image: nginx:1.21.3-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_value:/var/html/static/
+    depends_on:
+      - currency_rates
+
+volumes:
+  db_volume:
+  static_value:
