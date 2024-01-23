@@ -145,3 +145,17 @@ python currency_rates/manage.py migrate --run-syncdb
 ```bash
 python currency_rates/manage.py runserver
 ```
+
+# Доп. информация
+## Пример .env-файла
+```
+SECRET_KEY=asdfasdfasdfasdf # из setting.py Django-проекта
+API_ID=asdfasdfasdfasdfasdf # Ключ API openexchangerate.org
+
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=postgres
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=qwerty123
+DB_HOST=db
+DB_PORT=5432
+```
