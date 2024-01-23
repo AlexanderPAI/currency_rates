@@ -17,11 +17,5 @@ class RateRequestSerializer(serializers.ModelSerializer):
             # 'recent_requests'
         )
 
-    # def get_history(self, obj):
-    #     pass
-
-
-class AltSerializer(serializers.Serializer):
-    """Test."""
-    rate = RateRequestSerializer()
-
+    def get_history(self, obj):
+        pass
