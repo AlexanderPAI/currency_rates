@@ -16,7 +16,6 @@ services:
     build: .
     restart: always
     volumes:
-      # - ./currency_rates/static/:/app/static
       - static_value:/app/static/
     depends_on:
       - db
