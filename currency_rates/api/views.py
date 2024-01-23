@@ -1,17 +1,13 @@
 import os
-
 from datetime import datetime
-
-from dotenv import load_dotenv
 from pathlib import Path
 
-from rest_framework.decorators import action, api_view
-from rest_framework.response import Response
-
-from rate_request.models import RateRequest
 from api.serializers import RateRequestSerializer
-
 from api.services.get_usd_from_api import get_currency_rate
+from dotenv import load_dotenv
+from rate_request.models import RateRequest
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 env_file = Path(__file__).parent.parent / 'currency_rates' / '.env'
 load_dotenv(env_file)
@@ -28,7 +24,9 @@ def get_current_usd(request):
     """
     currency = 'USD'
     target_currency = 'RUB'
-    currency_rate = get_currency_rate(ENDPOINT, API_ID, currency, target_currency)
+    currency_rate = get_currency_rate(
+        ENDPOINT, API_ID, currency, target_currency
+    )
     if currency_rate is not None:
         rate_request = RateRequest.objects.create(
             request_date=datetime.fromtimestamp(currency_rate['timestamp']),
@@ -38,4 +36,6 @@ def get_current_usd(request):
         )
         serializer = RateRequestSerializer(rate_request)
         return Response(serializer.data)
-    return Response({'message': 'unable to get a response from the external api'})
+    return Response(
+        {'message': 'unable to get a response from the external api'}
+    )

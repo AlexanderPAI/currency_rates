@@ -1,6 +1,6 @@
 import time
-from rest_framework.throttling import BaseThrottle
 
+from rest_framework.throttling import BaseThrottle
 
 VISIT_RECORD = {}
 

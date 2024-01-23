@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from rate_request.models import RateRequest
 
 
