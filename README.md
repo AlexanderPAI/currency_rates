@@ -68,11 +68,11 @@
 ## С использованием docker-compose
 В этом случае запущенный проект будет доступен по URL `http:127.0.0.1/get-current-usd/`
 
-**1.** Клорировать репозиторий:
+**1.** Клонировать репозиторий:
 ```bash
 git clone git@github.com:AlexanderPAI/currency_rates.git
 ```
-**2.** Разместить в каталоге файл переменных окружения `currency_rates/.env`
+**2.** Разместить в каталоге файл переменных окружения `currency_rates/currency_rates/.env`
 Для удобства проверки можно просто [скачать](https://disk.yandex.ru/d/duglH_CdZAUAWQ) тестовый `.env` и расместить по указанному пути.
 
 **3.** Из каталога приложения запустить docker-compose:
@@ -109,10 +109,10 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-**4.** Разместить в каталоге файл переменных окружения `currency_rates/.env`
+**4.** Разместить в каталоге файл переменных окружения `currency_rates/currency_rates/.env`
 Для удобства проверки можно просто [скачать](https://disk.yandex.ru/d/duglH_CdZAUAWQ) тестовый `.env` и расместить по указанному пути.
 
-**5.** [Рекомендуется, но не обязательно] Для упрощения тестирования, чтобы не поднимать базу данных PostgreSQL в соответствии с данными, указанными в `.env`-файле, в настройках проекта Django `currency_rates/settings.py` можно заменить БД на SQLite3:
+**5.** [Рекомендуется, но не обязательно] Для упрощения тестирования, чтобы не поднимать базу данных PostgreSQL в соответствии с данными, указанными в `.env`-файле, в настройках проекта Django `currency_rates/currency_rates/settings.py` можно заменить БД на SQLite3:
 ```python
 # Раскомментировать строки:
 DATABASES = {
