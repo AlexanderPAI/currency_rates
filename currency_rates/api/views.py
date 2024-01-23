@@ -30,7 +30,6 @@ def get_current_usd(request):
     target_currency = 'RUB'
     currency_rate = get_currency_rate(ENDPOINT, API_ID, currency, target_currency)
     if currency_rate is not None:
-        history = RateRequest.objects.all()[:10]
         rate_request = RateRequest.objects.create(
             request_date=datetime.fromtimestamp(currency_rate['timestamp']),
             currency_code=currency,
