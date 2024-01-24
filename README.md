@@ -73,7 +73,7 @@
 git clone git@github.com:AlexanderPAI/currency_rates.git
 ```
 **2.** Разместить в каталоге файл переменных окружения `currency_rates/currency_rates/.env`
-Для удобства проверки можно просто [скачать](https://disk.yandex.ru/d/duglH_CdZAUAWQ) тестовый `.env` и расместить по указанному пути.
+Для удобства проверки можно просто [скачать](https://disk.yandex.ru/d/duglH_CdZAUAWQ) тестовый `.env` и разместить по указанному пути.
 
 **3.** Из каталога приложения запустить docker-compose:
 ```bash
@@ -86,7 +86,7 @@ docker-compose up --build
 
 В этом случае запущенный проект будет доступен по URL `http://127.0.0.1:8000/get-current-usd/` (обязательно с указанием порта)
 
-**1.** Клорировать репозиторий:
+**1.** Клонировать репозиторий:
 ```bash
 git clone git@github.com:AlexanderPAI/currency_rates.git
 ```
